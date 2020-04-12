@@ -26,7 +26,7 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname_index|string|null: false|
+|nickname|string|null: false ,index:true|
 
 ### Association
 - has_many :messages

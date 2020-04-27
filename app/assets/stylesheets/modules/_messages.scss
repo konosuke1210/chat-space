@@ -34,9 +34,9 @@
         color:$mainWhiteColor;
         margin-left: 0.1rem;
       }
-      }
-  }
-}
+    }
+   }
+ }
 &__group-list{
   background-color:#2f3e51;
   height:calc(100vh - 100px);
@@ -54,7 +54,7 @@
       color:$mainWhiteColor;
     }
   }
-}
+ }
 }
 
 .chat-main{
@@ -110,7 +110,7 @@
     padding:46px 40px;
     &__message{
       padding-bottom:40px;
-     &__upper-info{
+     &__upper-info{ 
        margin-bottom:10px;
        display:flex;
        &__talker{
@@ -123,14 +123,14 @@
          font-size:12px;
          margin-left:10px;
        } 
-    }
+     }
     &__text{
       color:#434A54;
       font-size:14px;
     }
+    }
   }
-  }
-  &__message-form{
+  &__message-form{ 
     height:90px;
     background-color: #d2d2d2;
     padding:20px 40px;
@@ -165,6 +165,6 @@
         color: $mainWhiteColor;
         cursor: pointer;
        }
-  }    
- }     
+    }    
+  }     
 }

@@ -5,32 +5,19 @@
     = current_user.name
    %ul.side-bar__header__box__menu
     %li.side-bar__header__box__menu__new
-     = link_to "#", class: "side-bar__header__box__menu__new" do
+     = link_to new_group_path  do
       = icon('far', 'edit', class: "side-bar__header__box__menu__new")
     %li.side-bar__header__box__menu__edit
      = link_to edit_user_path(current_user) do
       = icon('fas', 'cog', class: 'side-bar__header__box__menu__edit')
  .side-bar__group-list
-  .side-bar__group-list__group
-   %p.side-bar__group-list__group__item
-    a
-   %p.side-bar__group-list__group__latest-message
-    aaaaaaa
-  .side-bar__group-list__group
-   %p.side-bar__group-list__group__item
-    b
-   %p.side-bar__group-list__group__latest-message
-    bbbbbbb
-  .side-bar__group-list__group
-   %p.side-bar__group-list__group__item
-    c
-   %p.side-bar__group-list__group__latest-message
-    ccccccc
-  .side-bar__group-list__group
-   %p.side-bar__group-list__group__item
-    d
-   %p.side-bar__group-list__group__latest-message
-    ddddddd
+  - current_user.groups.each do |group|
+   .side-bar__group-list__group
+    = link_to '#' do
+     .side-bar__group-list__group__item
+      = group.name
+     .side-bar__group-list__group__latest-message
+      メッセージはまだありません。
 
 
 

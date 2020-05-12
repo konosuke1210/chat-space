@@ -17,3 +17,7 @@
 .byebug_history
 
 public/uploads/*
+
+# 下記を.gitignoreへ追記してください
+
+public/uploads/*

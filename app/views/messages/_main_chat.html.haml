@@ -1,38 +1,25 @@
 .chat-main
- .chat-main__group-info
-  .chat-main__group-info__name
-   %h2.chat-main__group-info__name__current
-    hogehoge
-   %ul.chat-main__group-info__name__member-list
-    Member :
-    %li.chat-main__group-info__name__member-list__member
-     東田
-    %li.chat-main__group-info__name__member-list__member
-     三好
-  .chat-main__group-info__edit
-   = link_to "#", class: "chat-main__group-info__edit-btn" do
-    Edit
- .chat-main__message-list
-  .chat-main__message-list__message
-   .chat-main__message-list__message__upper-info
-    %p.chat-main__message-list__message__upper-info__talker masa
-    %p.chat-main__message-list__message__upper-info__date 2020/04/21(Tue) 10:57:59
-   %p.chat-main__message-list__message__text こんにちは
-  .chat-main__message-list__message
-   .chat-main__message-list__message__upper-info
-    %p.chat-main__message-list__message__upper-info__talker masa
-    %p.chat-main__message-list__message__upper-info__date 2020/04/21(Tue) 10:57:59
-   %p.chat-main__message-list__message__text こんにちは
-  .chat-main__message-list__message
-   .chat-main__message-list__message__upper-info
-    %p.chat-main__message-list__message__upper-info__talker masa
-    %p.chat-main__message-list__message__upper-info__date 2020/04/21(Tue) 10:57:59
-   %p.chat-main__message-list__message__text こんにちは
- .chat-main__message-form
-  %form.chat-main__message-form__new_message
-   .chat-main__message-form__new_message__input-box
-    %input{class: "chat-main__message-form__new_message__input-box__text",placeholder:"type a message",type:"text"}
-    %label.chat-main__message-form__new_message__input-box__image
-     = icon('fa', 'image')
-     %input{class:"chat-main__message-form__new_message__input-box__image__file",type: "file"}
-   %input{class: "chat-main__message-form__new_message__submit",type:"submit",name:"comit",value:"Send"}
+  .chat-main__group-info
+    .chat-main__group-info__name
+      %h2.chat-main__group-info__name__current
+        =@group.name
+      %ul.chat-main__group-info__name__member-list
+        Member :
+        %li.chat-main__group-info__name__member-list__member
+          -@group.users.each do |user|
+            =user.name
+    .chat-main__group-info__edit
+      = link_to edit_group_path(@group.id), class: "chat-main__group-info__edit-btn" do
+        Edit
+  .chat-main__message-list
+    = render @messages
+  .chat-main__message-form
+    = form_for [@group, @message] do |f|
+      .new_message__input-box
+        = f.text_field :content, class: 'new_message__input-box__text', placeholder: 'type a message' 
+        = f.label :image, class: 'new_message__input-box__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'new_message__input-box__image__hidden' 
+      = f.submit 'Send', class: 'new_message__submit' 
+      
+
